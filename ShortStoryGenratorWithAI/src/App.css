@@ -1,0 +1,576 @@
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #F79F9F;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ed1363;
+}
+
+/* Animated starry background */
+body, .star-bg {
+  min-height: 100vh;
+  background: #181a20;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.stars {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+}
+
+/* Mystical card area glow/shadow */
+.mystical-card-area {
+  background: rgba(40, 30, 80, 0.85);
+  box-shadow: 0 0 40px 10px #a084e8, 0 0 0 1000px rgba(0,0,0,0.3) inset;
+  border-radius: 2rem;
+  padding: 2rem 1rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 520px;
+  height: 70vh;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+/* Soft vignette overlay */
+.vignette {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 10;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%);
+}
+
+/* Ensure main content is above background */
+.form-container, .heading {
+  position: relative;
+  z-index: 3;
+}
+
+.form-container.star-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  width: 100vw;
+  padding-top: 3vw;
+  box-sizing: border-box;
+}
+
+.heading {
+  text-align: center;
+  width: 100%;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  z-index: 3;
+  position: relative;
+  top: 0;
+  animation: none;
+}
+
+.heading h1 {
+  font-size: 2.5rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffe066;
+  text-shadow: none;
+  margin-bottom: 0;
+}
+
+.heading h1 span {
+  color: #ffe066;
+  text-shadow: 0 2px 16px #ffe066, 0 1px 0 #222;
+  transition: color 0.5s, text-shadow 0.5s;
+}
+
+@keyframes tarotTitleFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card row styling */
+.card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2vw;
+  margin: 2vw 0 2vw 0;
+  flex-wrap: wrap; /* Allow wrapping */
+  width: 100%;
+}
+
+.mystical-card-area {
+  margin: 0 auto 0 auto;
+  width: 100%;
+  max-width: 700px;
+  box-sizing: border-box;
+  background: #23242b;
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border: 1.5px solid #23242b;
+  position: relative;
+  z-index: 2;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+  height: 60vh;
+  max-height: 70vh;
+  overflow: hidden;
+}
+
+.prompt.tarot-card {
+  min-width: 180px;
+  max-width: 320px;
+  font-size: 1.08rem;
+  padding: 1.2rem 1rem;
+  background: #181a20;
+  color: #ffe066;
+  border: 1.5px solid #35363c;
+  border-radius: 1rem;
+  box-shadow: none;
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.prompt.tarot-card:hover {
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0 8px 32px 0 #a084e8, 0 1.5px 0 #a084e8;
+  z-index: 2;
+}
+
+.prompt.tarot-card .font-bold {
+  color: #ffe066;
+}
+.prompt.tarot-card .mb-5 {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .main-chat-section {
+    padding: 0;
+  }
+  .mystical-card-area {
+    min-height: 340px;
+    height: 60vh;
+    max-height: 70vh;
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+  .chat-history-area {
+    min-height: 180px;
+    max-height: 40vh;
+  }
+  .prompt.tarot-card {
+    min-width: 60vw;
+    max-width: 98vw;
+    padding: 1.2rem 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
+  }
+  .prompt.tarot-card {
+    min-width: 90vw;
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+}
+
+
+body{
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: #1E1E2F;
+}
+.input-field{
+  position: absolute;
+  border-top-right-radius:50px;
+  border-top-left-radius:50px;
+  bottom: 0;
+  height: 50vh;
+  width: 100%;
+  background-color: #2D2A4A;
+  box-shadow: 0 8px 32px 0 #B8B8FF;
+  
+}
+.input-field input::placeholder{
+  font-weight: 900;
+  opacity: .5;
+  font-size: 1.5vw;
+  color: #B8B8FF;
+}
+  
+
+.submit-btn i:hover{
+    transform: scale(1.5);
+  }
+.submit-btn i{
+    transition: .5s;
+    position: absolute;
+    right: 32%;
+    bottom: 5%;
+    font-size: 120%;
+}
+.input-field input{
+      font-family: 'Roboto Slab', serif;
+      outline: none;
+      padding-left: 2%;
+      position: absolute;
+      left: 30%;
+      bottom: 3%;
+      font-size: large;
+      border-radius: 10px;
+      height: 8vh;
+      width: 40%;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      border-color: #FFD700;
+      transition: .5s;
+      color: #F3F3F3;
+      background: #2D2A4A;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
+.heading h1 span{
+      color: #F3F3F3;
+}
+.heading h1{
+  text-align: center;
+  margin-top: 10%;
+  font-size: 8vw;
+  font-family: 'Croissant One', cursive;
+  color: #FFD700;
+}
+.lead-heading{
+  font-family: 'Roboto Slab', serif;
+  background: #2D2A4A;
+  color: #FFD700;
+}
+.leader-container{
+  background: #1E1E2F;
+}
+.showcase{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background: #2D2A4A;
+  box-shadow: 0 8px 32px 0 #B8B8FF;
+}
+.leadercompo{
+  background-image: linear-gradient(to right, #768DF6 , #a8b8fecd);
+  font-family: 'Croissant One', cursive;
+  background: #2D2A4A;
+  color: #F3F3F3;
+}
+.leader-btn{
+  position: absolute !important;
+  bottom: 5%;
+}
+.welcome-message{
+  color: #F3F3F3;
+}
+@media(max-width:800px){
+  .prompt p{
+    display: none;
+  }
+  .prompt{
+    width: 200%;
+    height: 10%;
+    margin-left: 2%;
+    
+  }
+  .input-field input{
+    height: 6vh;
+  }
+  
+}
+
+.improved-mystical-box {
+  border: 2.5px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: linear-gradient(135deg, rgba(40,30,80,0.92) 80%, rgba(160,132,232,0.18)),
+    linear-gradient(120deg, #a084e8 0%, #ffe066 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 40px 10px #a084e8, 0 0 0 1000px rgba(0,0,0,0.3) inset;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  border-radius: 2.2rem;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+/* Draw Cards Modal */
+.draw-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(20, 10, 40, 0.75);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInModal 0.4s;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.draw-modal-box {
+  background: rgba(60, 40, 120, 0.98);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 32px 8px #a084e8, 0 0 0 1000px rgba(0,0,0,0.2) inset;
+  border: 2.5px solid #ffe066;
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+  position: relative;
+  animation: popInModal 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes popInModal {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.close-modal-btn {
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, #a084e8 0%, #ffe066 100%);
+  color: #3a2e6c;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.8rem 2.2rem;
+  box-shadow: 0 2px 12px 0 #a084e8;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.close-modal-btn:hover {
+  background: linear-gradient(90deg, #ffe066 0%, #a084e8 100%);
+  color: #222;
+  box-shadow: 0 4px 24px 0 #ffe066;
+}
+
+/* Make the question input box larger and more prominent */
+.mystical-card-area input[type="text"] {
+  font-size: 1.2rem;
+  min-height: 3.2rem;
+  padding: 1.1rem 1.1rem;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  background: #181a20;
+  color: #fff;
+  border: 1.5px solid #35363c;
+  box-shadow: none;
+}
+
+.mystical-card-area input[type="text"]:focus {
+  outline: none;
+  border-color: #ffe066;
+  background: #23242b;
+  color: #ffe066;
+}
+
+.chat-history-area {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 1.5rem;
+  width: 100%;
+  min-height: 200px;
+  max-height: 48vh;
+  scrollbar-width: thin;
+  scrollbar-color: #23242b #23242b;
+}
+
+.chat-history-area::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-history-area::-webkit-scrollbar-thumb {
+  background: #23242b;
+  border-radius: 6px;
+}
+.chat-history-area::-webkit-scrollbar-track {
+  background: #181a20;
+  border-radius: 6px;
+}
+
+.chat-bubble-user, .chat-bubble-bot {
+  font-size: 1.1rem;
+  padding: 1.1rem 1.5rem;
+  border-radius: 1.5rem;
+  max-width: 70vw;
+  background: #35363c;
+  color: #fff;
+  box-shadow: none;
+  margin: 0.5rem 0;
+}
+
+.chat-bubble-user {
+  align-self: flex-end;
+  background: #35363c;
+  color: #ffe066;
+  margin: 0.5rem 0 0.5rem auto;
+}
+
+.chat-bubble-bot {
+  align-self: flex-start;
+  background: #23242b;
+  color: #fff;
+  margin: 0.5rem auto 0.5rem 0;
+}
+
+.new-chat-btn {
+  background: linear-gradient(90deg, #ffe066 0%, #a084e8 100%);
+  color: #2d225a;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  border-radius: 1.2rem;
+  border: none;
+  box-shadow: 0 2px 12px 0 #a084e8;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+.new-chat-btn:hover {
+  background: linear-gradient(90deg, #a084e8 0%, #ffe066 100%);
+  color: #222;
+  box-shadow: 0 4px 24px 0 #ffe066;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100vw;
+  background: #181a20;
+}
+
+.sidebar {
+  width: 270px;
+  background: #22232a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2.5rem 1.2rem 1.2rem 1.2rem;
+  box-shadow: 2px 0 24px 0 #000a;
+  z-index: 10;
+  min-height: 100vh;
+  border-right: 1.5px solid #23242b;
+}
+
+.sidebar-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.08em;
+  color: #ffe066;
+}
+
+.sidebar-btn {
+  width: 100%;
+  background: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 1rem 1.2rem;
+  border: none;
+  border-radius: 0.8rem;
+  margin-bottom: 0.7rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-btn.active, .sidebar-btn:hover {
+  background: #23242b;
+  color: #ffe066;
+}
+
+.main-chat-section {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 0 0 0 0;
+  background: #181a20;
+}
+
+.mystical-card-area {
+  margin: 3vw auto 2vw auto;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  background: rgba(40, 30, 80, 0.85);
+  box-shadow: 0 0 40px 10px #a084e8, 0 0 0 1000px rgba(0,0,0,0.3) inset;
+  border-radius: 2rem;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  border: 1.5px solid #a084e8;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 40px 10px #a084e8, 0 0 0 1000px rgba(0,0,0,0.3) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 520px;
+  height: 70vh;
+  max-height: 80vh;
+  overflow: hidden;
+}
